@@ -1,4 +1,3 @@
-import { useState } from "react";
 function ToDoList({ state, toggle }) {
   return (
     <div>
@@ -12,18 +11,16 @@ function ToDoList({ state, toggle }) {
           </tr>
 
           {state?.map(({ id, title, description, status }) => (
-            <>
-              
+           
               <tr key={id} onClick={() => toggle(id)}>
-                
                 <td>{id}</td>
                 <td>{title}</td>
-                <td>{description}</td>
+                <td>{description.split("").slice(0, 15).join("")}</td>
                 <td>
                   <input type="checkbox" value={status} />
                 </td>
               </tr>
-            </>
+            
           ))}
         </tbody>
       </table>

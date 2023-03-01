@@ -23,6 +23,8 @@ function CreateToDoList({ onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setEmptyTitle(true);
+    setEmptyDescription(true);
     if (title === "") {
       setEmptyTitle(false);
       return;
@@ -42,32 +44,34 @@ function CreateToDoList({ onSubmit }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <div>
-        <label>
-          Title
-          <input
-            className={emptyTitle ? "input" : "empty-input"}
-            type="text"
-            name="title"
-            value={title}
-            onChange={handleChange}
-          />
-        </label>
-          {!emptyTitle && <p>This field is empty</p>}
+          <label className="title">
+            Title
+            <input
+              className={emptyTitle ? "input" : "empty-input"}
+              type="text"
+              name="title"
+              value={title}
+              onChange={handleChange}
+            />
+          </label>
+          {!emptyTitle && <p className="emptyText">This field is empty</p>}
         </div>
         <div>
-        <label>
-          Description
-          <input
-            className={emptyDescription ? "input" : "empty-input"}
-            type="text"
-            name="description"
-            value={description}
-            onChange={handleChange}
-          />
-        </label>
-          {!emptyDescription && <p>This field is empty</p>}
+          <label className="description">
+            Description
+            <input
+              className={emptyDescription ? "input" : "empty-input"}
+              type="text"
+              name="description"
+              value={description}
+              onChange={handleChange}
+            />
+          </label>
+          {!emptyDescription && (
+            <p className="emptyText">This field is empty</p>
+          )}
         </div>
         <button type="submit">Create</button>
       </form>

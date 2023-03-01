@@ -40,6 +40,26 @@
 .read-the-docs {
   color: #888;
 }
+/* CreateToDoList */
+.form {
+  margin: 20px;
+}
+.form button {
+  margin-top: 10px;
+}
+.emptyText {
+  font-size: 8px;
+  color: red;
+}
+
+.title input {
+  margin-left: 60px;
+  border-radius: 5px;
+}
+.description input {
+  margin-left: 10px;
+  border-radius: 5px;
+}
 
 .input {
  border-color: #646cffaa; 

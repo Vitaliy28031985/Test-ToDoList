@@ -17,7 +17,7 @@ function App() {
     const idCreate = helpers.counter().toString();
     const nawToDo = { id: idCreate, title, description, status: false };
     setState((prevState) => [...prevState, nawToDo]);
-    console.log(state);
+   
   };
 
   const showModal = (id,) => {
@@ -26,13 +26,18 @@ function App() {
     helpers.handleToggle(setModal);
   };
 
+
  
   return (
     <div className="App">
       <CreateToDoList onSubmit={CreateToDo} />
       <ToDoList state={state} toggle={showModal} />
       {modal && (
-        <ModalToDo toggle={helpers.handleToggle} showModal={setModal} todo={todo}/>
+        <ModalToDo
+          toggle={helpers.handleToggle}
+          showModal={setModal}
+          todo={todo}
+        />
       )}
     </div>
   );
