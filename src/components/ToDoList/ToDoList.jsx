@@ -1,7 +1,7 @@
 import { useState } from "react";
-function ToDoList({ state }) {
+function ToDoList({ state, toggle }) {
   return (
-    <div class="table-responsive">
+    <div>
       <table>
         <tbody>
           <tr>
@@ -10,17 +10,21 @@ function ToDoList({ state }) {
             <td>DESCRIPTION</td>
             <td>STATUS</td>
           </tr>
-          
-            {state?.map(({ id, title, description, status }) => (
-              <><tr>
+
+          {state?.map(({ id, title, description, status }) => (
+            <>
+              
+              <tr key={id} onClick={() => toggle(id)}>
+                
                 <td>{id}</td>
                 <td>{title}</td>
                 <td>{description}</td>
-                <td></td>
+                <td>
+                  <input type="checkbox" value={status} />
+                </td>
               </tr>
-              </>
-            ))}
-          
+            </>
+          ))}
         </tbody>
       </table>
     </div>

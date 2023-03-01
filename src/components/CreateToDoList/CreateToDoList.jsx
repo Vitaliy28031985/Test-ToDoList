@@ -26,19 +26,24 @@ function CreateToDoList({ onSubmit }) {
     if (title === "") {
       setEmptyTitle(false);
       return;
-    } else if (description === false) {
+    
+    }
+    if (description === "") {
       setEmptyDescription(false);
-      return;
-    } else {
-      onSubmit(title, description);
+      return
+    } 
+    onSubmit(title, description);
+    setEmptyTitle(true);
+    setEmptyDescription(true);
       setTitle("");
       setDescription("");
-    }
+    
   };
 
   return (
     <>
       <form onSubmit={handleSubmit}>
+        <div>
         <label>
           Title
           <input
@@ -49,7 +54,9 @@ function CreateToDoList({ onSubmit }) {
             onChange={handleChange}
           />
         </label>
-
+          {!emptyTitle && <p>This field is empty</p>}
+        </div>
+        <div>
         <label>
           Description
           <input
@@ -60,6 +67,8 @@ function CreateToDoList({ onSubmit }) {
             onChange={handleChange}
           />
         </label>
+          {!emptyDescription && <p>This field is empty</p>}
+        </div>
         <button type="submit">Create</button>
       </form>
     </>
